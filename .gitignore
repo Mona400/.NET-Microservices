@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/PlatformService/obj/Debug/net8.0/PlatformService.AssemblyInfo.cs
+/PlatformService/obj/Debug/net8.0/PlatformService.AssemblyInfoInputs.cache
