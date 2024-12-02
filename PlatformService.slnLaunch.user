@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Name": "PlatformService\\PlatformService.csproj",
+        "Action": "Start"
+      },
+      {
+        "Name": "CommandsService\\CommandsService.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

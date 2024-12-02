@@ -5,6 +5,7 @@ using PlatformService.Data;
 using PlatformService.Interfaces;
 using PlatformService.Models;
 using PlatformService.Services;
+using PlatformService.SyncDataServices.Http;
 
 
 
@@ -38,7 +39,8 @@ namespace PlatformService
 
             builder.Services.AddScoped<IPlatform, PlatformServices>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-           //To Run the container
+           builder.Services.AddHttpClient<ICommandDataClient,CommandDataClient>();
+            //To Run the container
           //  builder.WebHost.UseUrls("http://0.0.0.0:8080");
 
             var app = builder.Build();
