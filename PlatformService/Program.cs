@@ -38,7 +38,15 @@ namespace PlatformService
 
             builder.Services.AddScoped<IPlatform, PlatformServices>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+           //To Run the container
+          //  builder.WebHost.UseUrls("http://0.0.0.0:8080");
+
             var app = builder.Build();
+            app.UseCors(policy =>
+    policy.AllowAnyOrigin()
+          .AllowAnyMethod()
+          .AllowAnyHeader());
+           
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
