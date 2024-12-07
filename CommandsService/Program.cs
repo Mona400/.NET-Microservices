@@ -1,4 +1,7 @@
 
+using CommandsService.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace CommandsService
 {
     public class Program
@@ -13,6 +16,15 @@ namespace CommandsService
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            #region Connection to database
+            builder.Services.AddDbContext<AppDbContext>(option =>
+            {
+                option.UseSqlServer(builder.Configuration.GetConnectionString("Connection"));
+         
+            });
+
+
+            #endregion
 
             var app = builder.Build();
 
