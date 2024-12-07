@@ -1,5 +1,7 @@
 
 using CommandsService.Data;
+using CommandsService.Interfaces;
+using CommandsService.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace CommandsService
@@ -22,8 +24,9 @@ namespace CommandsService
                 option.UseSqlServer(builder.Configuration.GetConnectionString("Connection"));
          
             });
-
-
+            #endregion
+            #region Add Service Registration
+            builder.Services.AddScoped<ICommand, CommandServices>();
             #endregion
 
             var app = builder.Build();
