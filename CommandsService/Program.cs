@@ -27,6 +27,7 @@ namespace CommandsService
             #endregion
             #region Add Service Registration
             builder.Services.AddScoped<ICommand, CommandServices>();
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             #endregion
 
             var app = builder.Build();
