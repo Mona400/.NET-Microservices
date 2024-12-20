@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "F4bI34qVVAu3NhSIgMaDixaTdWvOks7McsYP+L0GjtzOwh7DV6/bUzw2ve2GpkbWZY9ILhgg+4PpsRVAfmoG1g==",
+  "dgSpecHash": "YZKqNErnuhtcs/qvRfa2gD8oA/LQMPOvIf4nm5+RFM5mxove3MLH52SeD5HGWpgPZyMxa11/FFYLhrctbhXAdw==",
   "success": true,
   "projectFilePath": "D:\\A_Old_Material\\AA_OldLab_Top\\Templetes\\PlatformService\\CommandsService\\CommandsService.csproj",
   "expectedPackageFiles": [
@@ -54,6 +54,7 @@
     "C:\\Users\\ig\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.6\\microsoft.visualstudio.azure.containers.tools.targets.1.19.6.nupkg.sha512",
     "C:\\Users\\ig\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\ig\\.nuget\\packages\\mono.texttemplating\\3.0.0\\mono.texttemplating.3.0.0.nupkg.sha512",
+    "C:\\Users\\ig\\.nuget\\packages\\rabbitmq.client\\6.2.2\\rabbitmq.client.6.2.2.nupkg.sha512",
     "C:\\Users\\ig\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\ig\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\ig\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",

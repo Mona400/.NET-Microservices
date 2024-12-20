@@ -2,11 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using PlatformService.AsyncDataService;
+
 using PlatformService.Data;
 using PlatformService.Interfaces;
 using PlatformService.Models;
 using PlatformService.Services;
 using PlatformService.SyncDataServices.Http;
+using RabbitMQ.Client;
 
 
 
@@ -39,11 +41,29 @@ namespace PlatformService
             #endregion
 
             builder.Services.AddScoped<IPlatform, PlatformServices>();
-            builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>();
+         
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
            builder.Services.AddHttpClient<ICommandDataClient,CommandDataClient>();
+            // Register RabbitMQ connection and model as singletons
+            builder.Services.AddSingleton<IConnection>(sp =>
+            {
+                var configuration = sp.GetRequiredService<IConfiguration>();
+                var factory = new ConnectionFactory()
+                {
+                    HostName = configuration["RabbitMQHost"],
+                    Port = int.Parse(configuration["RabbitMQPort"])
+                };
+                return factory.CreateConnection();
+            });
+
+            builder.Services.AddSingleton<IModel>(sp =>
+            {
+                var connection = sp.GetRequiredService<IConnection>();
+                return connection.CreateModel();
+            });
+            builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>();
             //To Run the container
-          //  builder.WebHost.UseUrls("http://0.0.0.0:8080");
+            //  builder.WebHost.UseUrls("http://0.0.0.0:8080");
 
             var app = builder.Build();
             app.UseCors(policy =>
