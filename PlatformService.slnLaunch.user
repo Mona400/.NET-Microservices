@@ -4,11 +4,13 @@
     "Projects": [
       {
         "Name": "PlatformService\\PlatformService.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": ""
       },
       {
         "Name": "CommandsService\\CommandsService.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": ""
       }
     ]
   }
