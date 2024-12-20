@@ -11,6 +11,7 @@ namespace PlatformService.PlatformsProile
             CreateMap<Platform, PlatformReadDto>();
             CreateMap<PlatformCreateDto, Platform>();
             CreateMap<PlatformUpdateDto, Platform>();
+            CreateMap<PlatformReadDto, PlatformPublishDto>();
         }
     }
 }

@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using PlatformService.AsyncDataService;
 using PlatformService.Data;
 using PlatformService.Interfaces;
 using PlatformService.Models;
@@ -38,6 +39,7 @@ namespace PlatformService
             #endregion
 
             builder.Services.AddScoped<IPlatform, PlatformServices>();
+            builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
            builder.Services.AddHttpClient<ICommandDataClient,CommandDataClient>();
             //To Run the container
