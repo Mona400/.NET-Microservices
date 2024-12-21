@@ -1,5 +1,6 @@
 
 using CommandsService.Data;
+using CommandsService.EventProcessing;
 using CommandsService.Interfaces;
 using CommandsService.Services;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,7 @@ namespace CommandsService
             #endregion
             #region Add Service Registration
             builder.Services.AddScoped<ICommand, CommandServices>();
+            builder.Services.AddSingleton<IEventProcessor, EventProcessor>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             #endregion
 
