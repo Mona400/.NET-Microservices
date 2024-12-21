@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PlatformService.AsyncDataService;
 using PlatformService.Dtos;
 using PlatformService.Interfaces;
 using PlatformService.Models;
@@ -16,11 +17,13 @@ namespace PlatformService.Controllers
         private readonly IPlatform _platform;
         private readonly IMapper _mapper;
         private readonly ICommandDataClient _commandDataClient;
-        public PlatformsController(IPlatform platform, IMapper mapper, ICommandDataClient commandDataClient)
+        private readonly IMessageBusClient _messageBusClient;
+        public PlatformsController(IPlatform platform, IMapper mapper, ICommandDataClient commandDataClient, IMessageBusClient messageBusClient)
         {
             _platform = platform;
             _mapper = mapper;
             _commandDataClient = commandDataClient;
+            _messageBusClient = messageBusClient;
         }
         [HttpGet]
         public ActionResult<IEnumerable<PlatformReadDto>> GetAll()
@@ -42,6 +45,7 @@ namespace PlatformService.Controllers
                 return BadRequest("Platform data is null");
             }
 
+            //send sync messaage
             var platformEntity = _mapper.Map<Platform>(platformCreateDto);
             var createdPlatform = _platform.CreatePlateform(platformEntity);
             var platformReadDto = _mapper.Map<PlatformReadDto>(createdPlatform);
@@ -52,6 +56,18 @@ namespace PlatformService.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine($"could not send message synchronously{ex.Message}");
+            }
+            //send async message
+            try
+            {
+                var platformPublishDto = _mapper.Map<PlatformPublishDto>(platformReadDto);
+                platformPublishDto.Event = "Platform_Publish";
+                _messageBusClient.PublishNewPlatform(platformPublishDto);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"could not send message asynchronously{ex.Message}");
             }
             return Ok(_mapper.Map<PlatformReadDto>(platformReadDto));
         }

@@ -139,3 +139,4 @@ D:\A_Old_Material\AA_OldLab_Top\Templetes\PlatformService\PlatformService\obj\De
 D:\A_Old_Material\AA_OldLab_Top\Templetes\PlatformService\PlatformService\obj\Debug\net8.0\PlatformService.pdb
 D:\A_Old_Material\AA_OldLab_Top\Templetes\PlatformService\PlatformService\obj\Debug\net8.0\PlatformService.genruntimeconfig.cache
 D:\A_Old_Material\AA_OldLab_Top\Templetes\PlatformService\PlatformService\obj\Debug\net8.0\ref\PlatformService.dll
+D:\A_Old_Material\AA_OldLab_Top\Templetes\PlatformService\PlatformService\bin\Debug\net8.0\RabbitMQ.Client.dll

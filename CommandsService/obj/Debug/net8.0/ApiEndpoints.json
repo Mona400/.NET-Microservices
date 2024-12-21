@@ -64,7 +64,7 @@
   {
     "ContainingType": "CommandsService.Controllers.CommandsController",
     "Method": "GetCommandForPlatform",
-    "RelativePath": "api/Commands/GetCommandForPlatform",
+    "RelativePath": "api/Commands/GetCommandForPlatform/{platformId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -72,7 +72,7 @@
       {
         "Name": "platformId",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
