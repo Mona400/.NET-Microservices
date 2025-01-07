@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YZKqNErnuhtcs/qvRfa2gD8oA/LQMPOvIf4nm5+RFM5mxove3MLH52SeD5HGWpgPZyMxa11/FFYLhrctbhXAdw==",
+  "dgSpecHash": "sMLY6xWybUh5JDzkN3xkgE0xoJYCRMXRroCVeO1bRqERQQGhrC48m3Wc1FJFEUeEYIkSUZKkVXjkZgjhqAEV7g==",
   "success": true,
   "projectFilePath": "D:\\A_Old_Material\\AA_OldLab_Top\\Templetes\\PlatformService\\CommandsService\\CommandsService.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,11 @@
     "C:\\Users\\ig\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\ig\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\ig\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
+    "C:\\Users\\ig\\.nuget\\packages\\google.protobuf\\3.29.2\\google.protobuf.3.29.2.nupkg.sha512",
+    "C:\\Users\\ig\\.nuget\\packages\\grpc.core.api\\2.67.0\\grpc.core.api.2.67.0.nupkg.sha512",
+    "C:\\Users\\ig\\.nuget\\packages\\grpc.net.client\\2.67.0\\grpc.net.client.2.67.0.nupkg.sha512",
+    "C:\\Users\\ig\\.nuget\\packages\\grpc.net.common\\2.67.0\\grpc.net.common.2.67.0.nupkg.sha512",
+    "C:\\Users\\ig\\.nuget\\packages\\grpc.tools\\2.68.1\\grpc.tools.2.68.1.nupkg.sha512",
     "C:\\Users\\ig\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\ig\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "C:\\Users\\ig\\.nuget\\packages\\microsoft.build.framework\\17.8.3\\microsoft.build.framework.17.8.3.nupkg.sha512",

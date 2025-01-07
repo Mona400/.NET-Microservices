@@ -11,6 +11,13 @@ namespace PlatformService.Data
             
         }
         public DbSet<Platform>Platforms { get; set; }
-        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Platform>()
+                .Property(p => p.Id)
+                .ValueGeneratedOnAdd(); // Identity column configuration.
+        }
+
+
     }
 }

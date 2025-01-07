@@ -1,4 +1,5 @@
 
+using CommandsService.AsyncDataService;
 using CommandsService.Data;
 using CommandsService.EventProcessing;
 using CommandsService.Interfaces;
@@ -30,6 +31,8 @@ namespace CommandsService
             builder.Services.AddScoped<ICommand, CommandServices>();
             builder.Services.AddSingleton<IEventProcessor, EventProcessor>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            builder.Services.AddHostedService<MessageBusSubscriber>();
+
             #endregion
 
             var app = builder.Build();

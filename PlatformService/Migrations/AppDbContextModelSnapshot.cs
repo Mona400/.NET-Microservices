@@ -43,7 +43,7 @@ namespace PlatformService.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Platforms");
+                    b.ToTable("Platforms", (string)null);
                 });
 #pragma warning restore 612, 618
         }

@@ -64,6 +64,7 @@ namespace PlatformService.Controllers
                 platformPublishDto.Event = "Platform_Publish";
                 _messageBusClient.PublishNewPlatform(platformPublishDto);
 
+
             }
             catch (Exception ex)
             {

@@ -1,4 +1,5 @@
 
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using PlatformService.AsyncDataService;
@@ -7,6 +8,7 @@ using PlatformService.Data;
 using PlatformService.Interfaces;
 using PlatformService.Models;
 using PlatformService.Services;
+using PlatformService.SyncDataServices.Grpc;
 using PlatformService.SyncDataServices.Http;
 using RabbitMQ.Client;
 
@@ -36,25 +38,26 @@ namespace PlatformService
                 option.UseSqlServer(builder.Configuration.GetConnectionString("Connection"));
                 //option.UseInMemoryDatabase("InMemory");
             });
-           
+
 
             #endregion
 
             builder.Services.AddScoped<IPlatform, PlatformServices>();
-         
+
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-           builder.Services.AddHttpClient<ICommandDataClient,CommandDataClient>();
+            builder.Services.AddHttpClient<ICommandDataClient, CommandDataClient>();
+            builder.Services.AddGrpc();
             // Register RabbitMQ connection and model as singletons
             builder.Services.AddSingleton<IConnection>(sp =>
-            {
-                var configuration = sp.GetRequiredService<IConfiguration>();
-                var factory = new ConnectionFactory()
-                {
-                    HostName = configuration["RabbitMQHost"],
-                    Port = int.Parse(configuration["RabbitMQPort"])
-                };
-                return factory.CreateConnection();
-            });
+             {
+                 var configuration = sp.GetRequiredService<IConfiguration>();
+                 var factory = new ConnectionFactory()
+                 {
+                     HostName = configuration["RabbitMQHost"],
+                     Port = int.Parse(configuration["RabbitMQPort"])
+                 };
+                 return factory.CreateConnection();
+             });
 
             builder.Services.AddSingleton<IModel>(sp =>
             {
@@ -70,14 +73,25 @@ namespace PlatformService
     policy.AllowAnyOrigin()
           .AllowAnyMethod()
           .AllowAnyHeader());
-           
 
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllers();
+            //    endpoints.MapGrpcService<GrpcPlatformService>();
+            //    endpoints.MapGet("/protos/platform.proto", async context =>
+            //    {
+            //        await context.Response.WriteAsync(File.ReadAllText("protos/platform.proto"));
+            //    });
+
+            //});
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+           
             //static data 
             PreDb.PrePopulation(app);
 
