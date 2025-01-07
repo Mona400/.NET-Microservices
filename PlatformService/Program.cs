@@ -74,16 +74,10 @@ namespace PlatformService
           .AllowAnyMethod()
           .AllowAnyHeader());
 
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllers();
-            //    endpoints.MapGrpcService<GrpcPlatformService>();
-            //    endpoints.MapGet("/protos/platform.proto", async context =>
-            //    {
-            //        await context.Response.WriteAsync(File.ReadAllText("protos/platform.proto"));
-            //    });
+            // Enable Routing
+            app.UseRouting(); // This is necessary for routing requests to the correct endpoints
 
-            //});
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -95,10 +89,19 @@ namespace PlatformService
             //static data 
             PreDb.PrePopulation(app);
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapGrpcService<GrpcPlatformService>();
+                endpoints.MapGet("/protos/platform.proto", async context =>
+                {
+                    await context.Response.WriteAsync(File.ReadAllText("protos/platform.proto"));
+                });
 
+            });
 
             app.MapControllers();
 
